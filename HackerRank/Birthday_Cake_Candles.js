@@ -1,5 +1,6 @@
 function birthdayCakeCandles(candles) {
-    candles.sort();
+    // Write your code here
+    candles.sort((a, b) => a - b);
     var size = candles.length, sum = 0;
     if(candles[0] == candles[size - 1]) {
         return size;
@@ -12,5 +13,6 @@ function birthdayCakeCandles(candles) {
             break;
         }
     }
+    console.log(sum);
     return sum;
 }
