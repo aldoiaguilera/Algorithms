@@ -1,9 +1,8 @@
 function cutTheSticks(arr) {
     var num_of_sticks = [];
     num_of_sticks.push(arr.length)
-    timer = 10;
     do {
-        arr.sort();
+        arr.sort((a,b)=>a-b);
         var min = arr[0];
         for(var i = 0; i < arr.length; i++) {
             if(arr[i] == min) {
@@ -19,7 +18,6 @@ function cutTheSticks(arr) {
         }
         
     } while(arr.length > 0)
-    console.log('num of sticks: ', num_of_sticks);
     return num_of_sticks;
 }
 
