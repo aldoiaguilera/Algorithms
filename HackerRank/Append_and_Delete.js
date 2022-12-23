@@ -3,29 +3,30 @@ function appendAndDelete(s, t, k) {
     s = s.split('');
     t = t.split('');
     
-    // Pop
-    for(var i = 0; i < s.length; i++) {
-        if(s[i] != t[i]) {
-            let pops = s.length - (i);
-            while(pops != 0) {
-                s.pop();
-                pops--;
-                count++;
-            }
-        }
+    if((k / 2) > t.length) {
+        return 'Yes';
     }
     
-    // Push
-    for(var i = 0; i < t.length; i++) {
-        if(s[i] != t[i]) {
-            s.push(t[i]);
-            count++;
+    let iter = 0;
+    do {
+        if(s[iter] != t[iter]) {
+            count = s.length - iter;
+            break;
         }
-    }
-    
+        iter++; 
+    } while(iter < s.length);
+
     console.log(count);
 
-    if(count == k || Math.abs(count - k) % 2 != 0) {
+    if(count == 0) {
+        count = t.length - s.length;
+    }
+    
+    if(k < count * 2) {
+        return 'No';
+    }
+
+    if(k % 2 == 0 && k > 0) {
         return 'Yes';
     }
     else {
@@ -33,5 +34,8 @@ function appendAndDelete(s, t, k) {
     }
 }
 
-
-console.log(appendAndDelete('y','yu',2))
+console.log('Yes',appendAndDelete('aba', 'aba', 7));
+console.log('No',appendAndDelete('y','yu',2))
+console.log('No',appendAndDelete('abcd','abcdert',10))
+console.log('No',appendAndDelete('qwerasdf','qwerbsdf', 6))
+console.log('Yes',appendAndDelete('hackerhappy','hackerrank',9))
